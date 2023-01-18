@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
-{ 
+{
+    public float moveSpeed = 5;
+
     private void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");//sað ya da sola basýldýðý zaman yapýlacaklarýn tanýmý.
@@ -9,7 +11,7 @@ public class PlayerMovementController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, vertical);
 
-        Debug.Log(movement);
+        transform.position += movement *Time.deltaTime * moveSpeed;
 
 
     }
