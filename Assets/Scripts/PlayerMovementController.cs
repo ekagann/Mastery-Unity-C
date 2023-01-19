@@ -11,10 +11,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        if (Input.GetButtonDown("Fire1"))
-        {
-            rigidbody2D.AddForce(Vector2.up * jumpForce);
-        }
+
 
     }
 
@@ -27,7 +24,11 @@ public class PlayerMovementController : MonoBehaviour
 
         transform.position += movement * Time.deltaTime * moveSpeed;
 
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            rigidbody2D.AddForce(Vector2.up * jumpForce);
+        }
+
 
 
     }
