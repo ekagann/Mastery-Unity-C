@@ -2,16 +2,32 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    [SerializeField]
+    private float moveSpeed = 2;
+    [SerializeField]
+    private float jumpForce = 400;
 
-    private void Update()
+    private new Rigidbody2D rigidbody2D;
+    private void Awake()
     {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            rigidbody2D.AddForce(Vector2.up * jumpForce);
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+
         float horizontal = Input.GetAxis("Horizontal");//sað ya da sola basýldýðý zaman yapýlacaklarýn tanýmý.
-        float vertical = Input.GetAxis("Vertical");//yukarý ya da aþaðý basýldýðý zaman yapýlacaklarýn tanýmý.
 
-        Vector3 movement = new Vector3(horizontal, vertical);
+        Vector3 movement = new Vector3(horizontal, 0);
 
-        transform.position += movement *Time.deltaTime * moveSpeed;
+        transform.position += movement * Time.deltaTime * moveSpeed;
+
+        
 
 
     }
