@@ -12,13 +12,15 @@ public class CharacterGrounding : MonoBehaviour
     private float maxDistance;
     [SerializeField]
     private LayerMask layerMask;
-    [SerializeField]
-    private bool isGrounded;
+
+
+
+    public bool IsGrounded { get; private set; }
 
     private void Update()
     {
         CheckFootForGrounding(leftFoot);
-        if (isGrounded == false)
+        if (IsGrounded == false)
             CheckFootForGrounding(rightFoot);
 
     }
@@ -30,11 +32,11 @@ public class CharacterGrounding : MonoBehaviour
 
         if (raycastHit.collider != null)
         {
-            isGrounded = true;
+            IsGrounded = true;
         }
         else
         {
-            isGrounded = false;
+            IsGrounded = false;
         }
     }
 }
