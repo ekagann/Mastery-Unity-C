@@ -17,18 +17,17 @@ public class CharacterGrounding : MonoBehaviour
 
     private void Update()
     {
-        var raycastHit = Physics2D.Raycast(leftFoot.position, Vector2.down, maxDistance, layerMask);
-        Debug.DrawRay(leftFoot.position, Vector3.down * maxDistance, Color.red);
-        if (raycastHit.collider != null)
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-        raycastHit = Physics2D.Raycast(rightFoot.position, Vector2.down, maxDistance, layerMask);
-        Debug.DrawRay(leftFoot.position, Vector3.down * maxDistance, Color.red);
+        CheckFootForGrounding(leftFoot);
+        if (isGrounded == false)
+            CheckFootForGrounding(rightFoot);
+
+    }
+
+    private void CheckFootForGrounding(Transform foot)
+    {
+        var raycastHit = Physics2D.Raycast(foot.position, Vector2.down, maxDistance, layerMask);
+        Debug.DrawRay(foot.position, Vector3.down * maxDistance, Color.red);
+
         if (raycastHit.collider != null)
         {
             isGrounded = true;

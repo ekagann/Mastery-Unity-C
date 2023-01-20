@@ -15,7 +15,7 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
 
         float horizontal = Input.GetAxis("Horizontal");//sað ya da sola basýldýðý zaman yapýlacaklarýn tanýmý.
@@ -24,12 +24,12 @@ public class PlayerMovementController : MonoBehaviour
 
         transform.position += movement * Time.deltaTime * moveSpeed;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             rigidbody2D.AddForce(Vector2.up * jumpForce);
         }
 
 
-
+        
     }
 }
