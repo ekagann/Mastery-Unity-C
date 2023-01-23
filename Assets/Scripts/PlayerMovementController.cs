@@ -11,6 +11,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private new Rigidbody2D rigidbody2D;
     private CharacterGrounding characterGrounding;
+
+    public float Speed { get; private set; }
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -20,7 +23,9 @@ public class PlayerMovementController : MonoBehaviour
     private void Update()
     {
 
+
         float horizontal = Input.GetAxis("Horizontal");//sað ya da sola basýldýðý zaman yapýlacaklarýn tanýmý.
+        Speed = Mathf.Abs(horizontal);
 
         Vector3 movement = new Vector3(horizontal, 0);
 
