@@ -24,7 +24,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
 
 
         float horizontal = Input.GetAxis("Horizontal");//sað ya da sola basýldýðý zaman yapýlacaklarýn tanýmý.
-        Speed = Mathf.Abs(horizontal);
+        Speed = horizontal;
 
         Vector3 movement = new Vector3(horizontal, 0);
 
