@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CharacterGrounding))]
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField]
     private float moveSpeed = 2;
@@ -13,7 +13,6 @@ public class PlayerMovementController : MonoBehaviour
     private CharacterGrounding characterGrounding;
 
     public float Speed { get; private set; }
-
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();

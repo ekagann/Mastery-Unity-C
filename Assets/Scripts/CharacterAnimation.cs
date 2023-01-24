@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator animator;
-    private PlayerMovementController playerMovementController;
+    private IMove mover;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        playerMovementController = GetComponent<PlayerMovementController>();
+        mover = GetComponent<IMove>();
     }
     private void Update()
     {
-        float speed = playerMovementController.Speed;
+        float speed = mover.Speed;
         animator.SetFloat("Speed", speed);
     }
 }
