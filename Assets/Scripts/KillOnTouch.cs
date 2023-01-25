@@ -10,6 +10,7 @@ public class KillOnTouch : MonoBehaviour
         var playerMovementController = collision.collider.GetComponent<PlayerMovementController>();
         if (playerMovementController != null)
         {
+            GameManager.Instance.KillPlayer();
             SceneManager.LoadScene(0);
         }
     }
