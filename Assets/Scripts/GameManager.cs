@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
 {
-    public int Lives;// { get; private set; }
     public static GameManager Instance { get; private set; }
+
+    public int Lives { get; private set; }
+    
+    public event Action<int> OnLivesChanged;
+    public event Action<int> OnCoinsChanged;
+    private int coins;
 
     private void Awake()
     {
@@ -18,8 +23,9 @@ public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
         else
         {
             Instance = this;
-            Lives = 3;
             DontDestroyOnLoad(gameObject);
+            RestartGame();
+
         }
 
     }
@@ -28,6 +34,27 @@ public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
     {
         
         Lives--;
+
+
+        if (OnLivesChanged != null)
+            OnLivesChanged(Lives);
+
+        if (Lives <= 0)
+            RestartGame();
+
+    }
+
+    internal void AddCoin()
+    {
+        coins++;
+        if (OnCoinsChanged != null)
+            OnCoinsChanged(coins);
+
+    }
+
+    private void RestartGame()
+    {
+        Lives = 3;
         SceneManager.LoadScene(0);
     }
 }
