@@ -21,6 +21,13 @@ public class PlayerMovementController : MonoBehaviour, IMove
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && characterGrounding.IsGrounded)
+        {
+            rigidbody2D.AddForce(Vector2.up* jumpForce);
+        }
+    }
+    private void FixedUpdate()
+    {
 
 
         float horizontal = Input.GetAxis("Horizontal");//sað ya da sola basýldýðý zaman yapýlacaklarýn tanýmý.
@@ -33,10 +40,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
 
         //rigidbody2D.velocity = new Vector3(moveSpeed, 0, 0); saða doðru koþma kodu
 
-        if (Input.GetKeyDown(KeyCode.Space) && characterGrounding.IsGrounded)
-        {
-            rigidbody2D.AddForce(Vector2.up * jumpForce);
-        }
+        
 
 
 

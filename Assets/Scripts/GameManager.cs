@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
     public event Action<int> OnCoinsChanged;
     private int coins;
 
+    private void Update()
+    {
+        System.Threading.Thread.Sleep(50);
+    }
+
+
+
     private void Awake()
     {
         if (Instance != null)
@@ -41,7 +48,20 @@ public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
 
         if (Lives <= 0)
             RestartGame();
+        else
+            SendPlayerToCheckpoint();
 
+    }
+
+    private void SendPlayerToCheckpoint()
+    {
+        var checkpointManager = FindObjectOfType<CheckpointManager>();
+
+        var checkpoint = checkpointManager.GetLastPassedCheckpointThatWasPassed();
+
+        var player = FindObjectOfType<PlayerMovementController>();
+
+        player.transform.position = checkpoint.transform.position;
     }
 
     internal void AddCoin()
@@ -55,6 +75,9 @@ public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
     private void RestartGame()
     {
         Lives = 3;
+        coins = 0;
+        if (OnCoinsChanged != null)
+            OnCoinsChanged(coins);
         SceneManager.LoadScene(0);
     }
-}
+} 
