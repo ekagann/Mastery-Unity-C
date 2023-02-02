@@ -14,10 +14,7 @@ public class GameManager : MonoBehaviour //MonoSingleton<GameManager>
     public event Action<int> OnCoinsChanged;
     private int coins;
 
-    private void Update()
-    {
-        System.Threading.Thread.Sleep(50);
-    }
+    
 
 
 
