@@ -27,8 +27,9 @@ public class CoinBox : MonoBehaviour
             WasHitByPlayer(collision) &&
             WasHitFromBottomSide(collision))
         {
-            if (collision.contacts[0].normal.y > 0.5) ;
+            if (collision.contacts[0].normal.y > 0.5)
             {
+
 
                 GameManager.Instance.AddCoin();
                 remainingCoins--;
