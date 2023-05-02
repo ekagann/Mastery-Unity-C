@@ -11,11 +11,13 @@ public class CoinBox : MonoBehaviour
     private SpriteRenderer disabledSprite;
     [SerializeField]
     private int totalCoins = 1;
-
+    private Animator animator;
     private int remainingCoins;
 
     void Awake()
     {
+
+        animator = GetComponent<Animator>();
         remainingCoins = totalCoins;
     }
 
@@ -30,6 +32,7 @@ public class CoinBox : MonoBehaviour
 
                 GameManager.Instance.AddCoin();
                 remainingCoins--;
+                animator.SetTrigger("FlipCoin");
 
                 if (remainingCoins <= 0)
                 {
