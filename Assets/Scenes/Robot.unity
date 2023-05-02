@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enabledSprite: {fileID: 1313678866}
   disabledSprite: {fileID: 1808380659}
-  totalCoins: 1
+  totalCoins: 11
 --- !u!1001 &189253956
 PrefabInstance:
   m_ObjectHideFlags: 0
