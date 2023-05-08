@@ -21,7 +21,7 @@ public class CoinAudio : MonoBehaviour
     private void PlayCoinAudio(int coins)
     {
         audioSource.Play();
-    }m
+    }
 
     
 
