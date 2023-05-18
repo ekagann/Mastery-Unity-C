@@ -6,8 +6,8 @@ public class BreakableBox : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (WasHitByPlayer(collision) &&
-            WasHitFromBottomSide(collision))
+        if (collision.WasHitByPlayer() &&
+            collision.WasHitFromBottomSide())
         {
             Destroy(gameObject);
 
@@ -15,13 +15,5 @@ public class BreakableBox : MonoBehaviour
 
 
     }
-    private static bool WasHitByPlayer(Collision2D collision)
-    {
-        return collision.collider.GetComponent<PlayerMovementController>() != null;
-    }
-
-    private static bool WasHitFromBottomSide(Collision2D collision)
-    {
-        return collision.contacts[0].normal.y > 0.5;
-    }
+    
 }
